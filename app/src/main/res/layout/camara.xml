@@ -5,18 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_centerInParent="true"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     tools:context=".MainActivity">
 
-
-    <Button
-        android:id="@+id/botonCamara"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textViewImagenFoto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/btncamara" />
+        android:text="TextView" />
 
     <ImageView
         android:id="@+id/imageView"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/botonCamara"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/btncamara" />
+
+    <Button
+        android:id="@+id/botonSeleccionarFoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:onClick="onClickGaleria"
+        android:text="@string/btnseleccionarfoto" />
+
+    <Button
+        android:id="@+id/botonaceptarfoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/btnaceptarfoto" />
+
 </LinearLayout>

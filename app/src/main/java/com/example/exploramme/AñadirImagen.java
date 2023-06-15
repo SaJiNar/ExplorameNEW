@@ -3,7 +3,6 @@ package com.example.exploramme;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -21,54 +20,62 @@ import java.io.IOException;
 
 public class AñadirImagen extends AppCompatActivity {
 
-    Button btnCamara;
-    ImageView imgView;
-    String rutaImagen;
+    private static final int REQUEST_CAMERA = 1;
+    private static final int REQUEST_GALLERY = 2;
+
+    private Button btnCamara;
+    private Button btnSeleccionarFoto;
+    private Button btnAceptarFoto;
+    private ImageView imgView;
+    private String rutaImagen;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camara);
+
         btnCamara = findViewById(R.id.botonCamara);
+        btnSeleccionarFoto = findViewById(R.id.botonSeleccionarFoto);
+        btnAceptarFoto = findViewById(R.id.botonaceptarfoto);
         imgView = findViewById(R.id.imageView);
 
-    btnCamara.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            abrirCamara();
-        }
-    });
+        btnCamara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirCamara();
+            }
+        });
+
+        btnSeleccionarFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cargarImagen();
+            }
+        });
+
+        btnAceptarFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Realiza las acciones necesarias al aceptar la foto seleccionada
+                // Puedes obtener la ruta de la imagen seleccionada desde la variable "rutaImagen"
+            }
+        });
     }
 
-   //El if qye hay comentado esta porque en emulador no se pueden hacer fotos con ese if activado,
-    //Sin embargo, se necesita tenerlo activo si queremos que la cámara funcione en dispositivos reales.
-    private void abrirCamara(){
+    private void abrirCamara() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-       // if(intent.resolveActivity(getPackageManager()) != null){
+        File imagenArchivo = null;
 
-            File imagenArchivo = null;
+        try {
+            imagenArchivo = crearImagen();
+        } catch (IOException ex) {
+            Log.e("Error", ex.toString());
+        }
 
-            try{
-                imagenArchivo = crearImagen();
-            }catch(IOException ex){
-                Log.e("Error", ex.toString());
-            }
-
-            if (imagenArchivo != null){
-                Uri fotoUri = FileProvider.getUriForFile(this, "com.example.exploramme.fileprovider", imagenArchivo);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
-                startActivityForResult(intent, 1);
-            }
-
-       // }
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            //Bundle extras = data.getExtras();
-            Bitmap imgBitmap = BitmapFactory.decodeFile(rutaImagen);
-            imgView.setImageBitmap(imgBitmap);
+        if (imagenArchivo != null) {
+            Uri fotoUri = FileProvider.getUriForFile(this, "com.example.exploramme.fileprovider", imagenArchivo);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
+            startActivityForResult(intent, REQUEST_CAMERA);
         }
     }
 
@@ -81,4 +88,14 @@ public class AñadirImagen extends AppCompatActivity {
         return imagen;
     }
 
+    private void cargarImagen() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent, REQUEST_GALLERY);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }
