@@ -10,18 +10,6 @@
     android:paddingRight="20dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textViewImagenFoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="360dp"
-        android:layout_height="360dp"
-        android:layout_gravity="center_horizontal" />
-
     <Button
         android:id="@+id/botonCamara"
         android:layout_width="match_parent"
@@ -39,6 +27,13 @@
         android:layout_marginBottom="20dp"
         android:onClick="onClickGaleria"
         android:text="@string/btnseleccionarfoto" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"/>
 
     <Button
         android:id="@+id/botonaceptarfoto"

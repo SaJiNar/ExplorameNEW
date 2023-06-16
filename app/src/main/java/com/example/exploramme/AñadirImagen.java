@@ -1,6 +1,7 @@
 package com.example.exploramme;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -97,5 +98,27 @@ public class AñadirImagen extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
+            Bitmap imgBitmap = BitmapFactory.decodeFile(rutaImagen);
+            imgView.setImageBitmap(imgBitmap);
+        } else if (requestCode == REQUEST_GALLERY && resultCode == RESULT_OK) {
+            Uri imageUri = data.getData();
+            imgView.setImageURI(imageUri);
+            rutaImagen = obtenerRutaImagenDesdeUri(imageUri);
+        }
+    }
+
+    private String obtenerRutaImagenDesdeUri(Uri uri) {
+        String path = null;
+        String[] projection = {MediaStore.Images.Media.DATA};
+        try (Cursor cursor = getContentResolver().query(uri, projection, null, null, null)) {
+            if (cursor != null && cursor.moveToFirst()) {
+                int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                path = cursor.getString(columnIndex);
+            }
+        } catch (Exception e) {
+            Log.e("Error", e.toString());
+        }
+        return path;
     }
 }
