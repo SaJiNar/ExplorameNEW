@@ -1,60 +1,101 @@
 package com.example.exploramme;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.palette.graphics.Palette;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.example.exploramme.ciudades.alcoy.AlcoyActivity;
+import com.example.exploramme.ciudades.castalla.CastallaActivity;
+import com.example.exploramme.ciudades.ibi.IbiActivity;
+import com.example.exploramme.ciudades.onil.OnilActivity;
 
 public class menuCiudad extends AppCompatActivity {
 
-    private FrameLayout container;
-    private ImageView imageView;
-    private TextView textView;
+    private ConstraintLayout container;
+    private ImageView imageViewAlcoy;
+    private ImageView imageViewCastalla;
+    private ImageView imageViewIbi;
+    private ImageView imageViewOnil;
+    private TextView textViewAlcoy;
+    private TextView textViewCastalla;
+    private TextView textViewIbi;
+    private TextView textViewOnil;
+    private ConstraintLayout constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selector_ciudad);
 
-        container = findViewById(R.id.container);
-        imageView = findViewById(R.id.imageView);
-        textView = findViewById(R.id.textView);
+        container = findViewById(R.id.constraintLayout);
+        imageViewAlcoy = findViewById(R.id.imageViewAlcoy);
+        imageViewCastalla = findViewById(R.id.imageView2Castalla);
+        imageViewIbi = findViewById(R.id.imageViewIbi);
+        imageViewOnil = findViewById(R.id.imageViewOnil);
+        textViewAlcoy = findViewById(R.id.textViewAlcoy);
+        textViewCastalla = findViewById(R.id.textViewCastalla);
+        textViewIbi = findViewById(R.id.textViewIbi);
+        textViewOnil = findViewById(R.id.textViewOnil);
+        constraintLayout = findViewById(R.id.constraintLayout);
 
-        container.setOnClickListener(new View.OnClickListener() {
+        imageViewAlcoy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Obtener el bitmap de la imagen
-                Drawable drawable = imageView.getDrawable();
-                Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-
-                // Crear un Palette para obtener los colores de la imagen
-                Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-                    @Override
-                    public void onGenerated(Palette palette) {
-                        // Obtener el color dominante de la imagen
-                        int dominantColor = palette.getDominantColor(getResources().getColor(R.color.teal_200));
-
-                        // Establecer el color dominante como fondo del contenedor
-                        container.setBackgroundColor(dominantColor);
-
-                        // Difuminar la imagen
-                        imageView.setAlpha(0.5f);
-
-                        // Agrandar el texto
-                        textView.setTextSize(24);
-
-                        // Mostrar el texto
-                        textView.setVisibility(View.VISIBLE);
-                    }
-                });
+                navigateToAlcoy();
             }
         });
+
+        imageViewCastalla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToCastalla();
+            }
+        });
+
+        imageViewIbi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToIbi();
+            }
+        });
+
+        imageViewOnil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToOnil();
+            }
+        });
+
+        // Configurar el fondo animado
+        final AnimationDrawable animationDrawable = (AnimationDrawable) container.getBackground();
+        animationDrawable.setEnterFadeDuration(20000); // 20 segundos
+        animationDrawable.setExitFadeDuration(3000); // 3 segundos
+        animationDrawable.start();
+    }
+
+    private void navigateToAlcoy() {
+        Intent intent = new Intent(menuCiudad.this, AlcoyActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateToCastalla() {
+        Intent intent = new Intent(menuCiudad.this, CastallaActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateToIbi() {
+        Intent intent = new Intent(menuCiudad.this, IbiActivity.class);
+        startActivity(intent);
+    }
+
+    private void navigateToOnil() {
+        Intent intent = new Intent(menuCiudad.this, OnilActivity.class);
+        startActivity(intent);
     }
 }

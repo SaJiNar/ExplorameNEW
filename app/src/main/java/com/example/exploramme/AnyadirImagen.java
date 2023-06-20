@@ -19,7 +19,7 @@ import androidx.core.content.FileProvider;
 import java.io.File;
 import java.io.IOException;
 
-public class AñadirImagen extends AppCompatActivity {
+public class AnyadirImagen extends AppCompatActivity {
 
     private static final int REQUEST_CAMERA = 1;
     private static final int REQUEST_GALLERY = 2;

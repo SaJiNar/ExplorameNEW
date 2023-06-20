@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/container"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientlist"
+    tools:context=".menuCiudad">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,7 +17,7 @@
         android:layout_marginBottom="20dp">
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/imageViewAlcoy"
             android:layout_width="320dp"
             android:layout_height="110dp"
             android:layout_alignParentStart="true"
@@ -26,13 +30,13 @@
             android:src="@drawable/descarga" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textViewAlcoy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@id/imageView1"
-            android:layout_alignTop="@id/imageView1"
-            android:layout_alignEnd="@id/imageView1"
-            android:layout_alignBottom="@id/imageView1"
+            android:layout_alignStart="@id/imageViewAlcoy"
+            android:layout_alignTop="@id/imageViewAlcoy"
+            android:layout_alignEnd="@id/imageViewAlcoy"
+            android:layout_alignBottom="@id/imageViewAlcoy"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="Texto 1"
@@ -41,80 +45,80 @@
             android:visibility="visible" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageView2Castalla"
             android:layout_width="320dp"
             android:layout_height="110dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/textView1"
+            android:layout_below="@id/textViewAlcoy"
             android:scaleType="centerCrop"
             android:src="@drawable/descarga"
             android:layout_margin="20dp"
             />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewCastalla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Texto 2"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:layout_alignStart="@id/imageView2"
-            android:layout_alignTop="@id/imageView2"
-            android:layout_alignEnd="@id/imageView2"
-            android:layout_alignBottom="@id/imageView2"
+            android:layout_alignStart="@id/imageView2Castalla"
+            android:layout_alignTop="@id/imageView2Castalla"
+            android:layout_alignEnd="@id/imageView2Castalla"
+            android:layout_alignBottom="@id/imageView2Castalla"
             android:gravity="center"
             android:visibility="visible" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imageViewIbi"
             android:layout_width="320dp"
             android:layout_height="110dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/textView2"
+            android:layout_below="@id/textViewCastalla"
             android:scaleType="centerCrop"
             android:src="@drawable/descarga"
             android:layout_margin="20dp"
             />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textViewIbi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Texto 3"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:layout_alignStart="@id/imageView3"
-            android:layout_alignTop="@id/imageView3"
-            android:layout_alignEnd="@id/imageView3"
-            android:layout_alignBottom="@id/imageView3"
+            android:layout_alignStart="@id/imageViewIbi"
+            android:layout_alignTop="@id/imageViewIbi"
+            android:layout_alignEnd="@id/imageViewIbi"
+            android:layout_alignBottom="@id/imageViewIbi"
             android:gravity="center"
             android:visibility="visible" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imageViewOnil"
             android:layout_width="320dp"
             android:layout_height="110dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/textView3"
+            android:layout_below="@id/textViewIbi"
             android:scaleType="centerCrop"
             android:src="@drawable/descarga"
             android:layout_margin="20dp"
             />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textViewOnil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Texto 4"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:layout_alignStart="@id/imageView4"
-            android:layout_alignTop="@id/imageView4"
-            android:layout_alignEnd="@id/imageView4"
-            android:layout_alignBottom="@id/imageView4"
+            android:layout_alignStart="@id/imageViewOnil"
+            android:layout_alignTop="@id/imageViewOnil"
+            android:layout_alignEnd="@id/imageViewOnil"
+            android:layout_alignBottom="@id/imageViewOnil"
             android:gravity="center"
             android:visibility="visible" />
 
     </RelativeLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
