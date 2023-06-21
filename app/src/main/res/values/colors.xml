@@ -17,4 +17,8 @@
     <color name="blue_gray_light">#457B9D</color>
     <color name="blue_gray_medium">#7FB3D5</color>
     <color name="blue_aqua">#4DADB1</color>
+
+    <color name="color_white_t">#CCFFFFFF</color>
+    <color name="magenta">#5F1CD6</color>
+    <color name="color_Link">#0D47A1</color>
 </resources>

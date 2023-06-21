@@ -93,9 +93,19 @@
             android:text="CREAR CUENTA"
             android:textSize="25dp"
             android:backgroundTint="@color/blue_gray_light"
-            app:cornerRadius="20dp" />
+            app:cornerRadius="20dp"
+            android:elevation="8dp"/>
 
+        <Button
+            android:id="@+id/btnIniciarSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="INICIAR SESIÓN"
+            android:textSize="25dp"
+            android:backgroundTint="@color/blue_gray_light"
+            app:cornerRadius="20dp"
+            android:elevation="8dp"/>
 
     </LinearLayout>
 </RelativeLayout>
-
