@@ -71,7 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NOMBRE_USUARIO, nombre);
         values.put(COLUMN_TELEFONO, telefono);
-        values.put(COLUMN_URL_LUGAR, url_lugar);
+        values.put(COLUMN_CORREO_ELECTRONICO, url_lugar);
         values.put(COLUMN_GENERO, genero);
 
         long result = db.insert(TABLE_REGISTROS, null, values);

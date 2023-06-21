@@ -79,6 +79,22 @@ public class menuCiudad extends AppCompatActivity {
         animationDrawable.start();
     }
 
+    public void onAlcoyButtonClick(View view) {
+        navigateToAlcoy();
+    }
+
+    public void onCastallaButtonClick(View view) {
+        navigateToCastalla();
+    }
+
+    public void onIbiButtonClick(View view) {
+        navigateToIbi();
+    }
+
+    public void onOnilButtonClick(View view) {
+        navigateToOnil();
+    }
+
     private void navigateToAlcoy() {
         Intent intent = new Intent(menuCiudad.this, AlcoyActivity.class);
         startActivity(intent);
