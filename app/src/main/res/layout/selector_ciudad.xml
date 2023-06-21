@@ -27,7 +27,15 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/descarga" />
+            android:src="@drawable/plazaespanyaalcoy"
+            android:background="@drawable/imageview_border"
+            android:alpha="0.8"
+            android:padding="5dp"
+            android:cropToPadding="true"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:radius="5dp" />
 
         <TextView
             android:id="@+id/textViewAlcoy"
@@ -39,9 +47,11 @@
             android:layout_alignBottom="@id/imageViewAlcoy"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="Texto 1"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:text="Alcoy"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:background="#33000000"
             android:visibility="visible" />
 
         <ImageView
@@ -51,22 +61,29 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/textViewAlcoy"
             android:scaleType="centerCrop"
-            android:src="@drawable/descarga"
+            android:src="@drawable/castillocastalla"
+            android:background="@drawable/imageview_border"
+            android:alpha="0.8"
+            android:padding="5dp"
+            android:cropToPadding="true"
+            android:adjustViewBounds="true"
             android:layout_margin="20dp"
-            />
+            android:radius="5dp" />
 
         <TextView
             android:id="@+id/textViewCastalla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Texto 2"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:text="Castalla"
+            android:textColor="@color/white"
+            android:textSize="60sp"
             android:layout_alignStart="@id/imageView2Castalla"
             android:layout_alignTop="@id/imageView2Castalla"
             android:layout_alignEnd="@id/imageView2Castalla"
             android:layout_alignBottom="@id/imageView2Castalla"
             android:gravity="center"
+            android:fontFamily="@font/montserrat_bold"
+            android:background="#33000000"
             android:visibility="visible" />
 
         <ImageView
@@ -76,22 +93,29 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/textViewCastalla"
             android:scaleType="centerCrop"
-            android:src="@drawable/descarga"
+            android:src="@drawable/reyesmagosibi"
+            android:background="@drawable/imageview_border"
+            android:alpha="0.8"
+            android:padding="5dp"
+            android:cropToPadding="true"
+            android:adjustViewBounds="true"
             android:layout_margin="20dp"
-            />
+            android:radius="5dp" />
 
         <TextView
             android:id="@+id/textViewIbi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Texto 3"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:text="Ibi"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            android:fontFamily="@font/montserrat_bold"
             android:layout_alignStart="@id/imageViewIbi"
             android:layout_alignTop="@id/imageViewIbi"
             android:layout_alignEnd="@id/imageViewIbi"
             android:layout_alignBottom="@id/imageViewIbi"
             android:gravity="center"
+            android:background="#33000000"
             android:visibility="visible" />
 
         <ImageView
@@ -101,24 +125,31 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/textViewIbi"
             android:scaleType="centerCrop"
-            android:src="@drawable/descarga"
+            android:src="@drawable/castilloonil"
+            android:background="@drawable/imageview_border"
+            android:alpha="0.8"
+            android:padding="5dp"
+            android:cropToPadding="true"
+            android:adjustViewBounds="true"
             android:layout_margin="20dp"
-            />
+            android:radius="5dp" />
 
         <TextView
             android:id="@+id/textViewOnil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Texto 4"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:text="Onil"
+            android:textColor="@color/white"
+            android:textSize="60sp"
             android:layout_alignStart="@id/imageViewOnil"
             android:layout_alignTop="@id/imageViewOnil"
             android:layout_alignEnd="@id/imageViewOnil"
             android:layout_alignBottom="@id/imageViewOnil"
             android:gravity="center"
+            android:fontFamily="@font/montserrat_bold"
+            android:background="#33000000"
             android:visibility="visible" />
 
     </RelativeLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
