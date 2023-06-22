@@ -2,6 +2,7 @@ package com.example.exploramme;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -52,6 +53,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
+
+        // Agregar botón de retroceso en la barra de título
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    // Manejar el evento de hacer clic en el botón de retroceso de la barra de título
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void cargarLugares() {
@@ -68,9 +82,13 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Obtener los datos del nuevo lugar añadido
                 String nombreLugar = data.getStringExtra("nombre_lugar");
+                String telefonoLugar = data.getStringExtra("telefono_lugar");
+                String urlLugar = data.getStringExtra("url_lugar");
+                String imagen = data.getStringExtra("imagen");
+                String ciudad = data.getStringExtra("ciudad");
 
                 // Guardar el lugar en la base de datos
-                long id = dbHelper.insertarSitio(nombreLugar);
+                long id = dbHelper.insertarSitio(nombreLugar, telefonoLugar, urlLugar, imagen, ciudad);
                 if (id != -1) {
                     Toast.makeText(this, "Lugar añadido correctamente", Toast.LENGTH_SHORT).show();
 

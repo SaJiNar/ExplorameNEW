@@ -107,7 +107,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return userList;
     }
 
-    public long insertarSitio(String nombre_lugar) {
+    public long insertarSitio(String nombre_lugar, String telefono_lugar, String url_lugar, String imagen, String ciudad) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -149,7 +149,47 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return lugarList;
     }
+
+    public List<Lugar> getLugaresByCiudad(String ciudad) {
+        List<Lugar> lugaresByCiudad = new ArrayList<>();
+
+        String selectQuery = "SELECT * FROM " + TABLE_SITIOS + " WHERE " + COLUMN_CIUDAD + " = ?";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{ciudad});
+
+        if (cursor.moveToFirst()) {
+            do {
+                String nombreLugar = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE_LUGAR));
+                String telefonoLugar = cursor.getString(cursor.getColumnIndex(COLUMN_TELEFONO_LUGAR));
+                String urlLugar = cursor.getString(cursor.getColumnIndex(COLUMN_URL_LUGAR));
+                String imagen = cursor.getString(cursor.getColumnIndex(COLUMN_IMAGEN));
+                String ciudadLugar = cursor.getString(cursor.getColumnIndex(COLUMN_CIUDAD));
+
+                Lugar lugar = new Lugar(nombreLugar, telefonoLugar, urlLugar, imagen, ciudadLugar);
+                lugaresByCiudad.add(lugar);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return lugaresByCiudad;
+    }
+
+    public List<Lugar> getLugaresByAlcoy() {
+        return getLugaresByCiudad("Alcoy");
+    }
+
+    public List<Lugar> getLugaresByCastalla() {
+        return getLugaresByCiudad("Castalla");
+    }
+
+    public List<Lugar> getLugaresByIbi() {
+        return getLugaresByCiudad("Ibi");
+    }
+
+    public List<Lugar> getLugaresByOnil() {
+        return getLugaresByCiudad("Onil");
+    }
 }
-
-
-

@@ -3,6 +3,7 @@ package com.example.exploramme;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -72,6 +73,19 @@ public class menuCiudad extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(20000); // 20 segundos
         animationDrawable.setExitFadeDuration(3000); // 3 segundos
         animationDrawable.start();
+
+        // Agregar botón de retroceso en la barra de título
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    // Manejar el evento de hacer clic en el botón de retroceso de la barra de título
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void onAlcoyButtonClick(View view) {

@@ -51,13 +51,6 @@ public class menuLogin extends AppCompatActivity {
                 } else {
                     Toast.makeText(menuLogin.this, "Error al registrar usuario", Toast.LENGTH_SHORT).show();
                 }
-
-                Intent intent = new Intent(menuLogin.this, menuCiudad.class);
-                intent.putExtra("nombre", nombre);
-                intent.putExtra("telefono", telefono);
-                intent.putExtra("email", email);
-                intent.putExtra("genero", genero);
-                startActivity(intent);
             }
         });
 
@@ -69,7 +62,7 @@ public class menuLogin extends AppCompatActivity {
                 // y redirigir al usuario a la siguiente página.
                 // Verificar las credenciales en la base de datos y redirigir al usuario
                 if (verificarCredenciales()) {
-                    Intent intent = new Intent(menuLogin.this, menuCiudad.class);
+                    Intent intent = new Intent(menuLogin.this, menuProvincia.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(menuLogin.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
@@ -84,6 +77,4 @@ public class menuLogin extends AppCompatActivity {
         // Si las credenciales son válidas, puedes devolver true; de lo contrario, devolver false.
         return true; // Cambia esto según tu lógica de verificación
     }
-
-
 }

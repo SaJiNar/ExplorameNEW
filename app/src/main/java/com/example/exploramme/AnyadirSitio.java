@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -44,7 +45,7 @@ public class AnyadirSitio extends AppCompatActivity {
         imageFoto = findViewById(R.id.imageFoto);
         btnCamara = findViewById(R.id.botonCamara);
         btnSeleccionarFoto = findViewById(R.id.botonSeleccionarFoto);
-        btnAceptarFoto = findViewById(R.id.botonaceptarfoto);
+        btnAceptarFoto = findViewById(R.id.botonaceptar);
 
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +76,19 @@ public class AnyadirSitio extends AppCompatActivity {
                 }
             }
         });
+
+        // Agregar botón de retroceso en la barra de título
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    // Manejar el evento de hacer clic en el botón de retroceso de la barra de título
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void abrirCamara() {
@@ -145,7 +159,7 @@ public class AnyadirSitio extends AppCompatActivity {
         String urlLugar = "URL del lugar"; // Obtén la URL del lugar desde algún campo de entrada
         String ciudad = "Ciudad del lugar"; // Obtén la ciudad del lugar desde algún campo de entrada
 
-        long resultado = dbHelper.insertarSitio(nombreLugar);
+        long resultado = dbHelper.insertarSitio(nombreLugar, telefonoLugar, urlLugar, rutaImagen, ciudad);
         if (resultado != -1) {
             // Inserción exitosa
             Log.d("AnyadirImagen", "Sitio insertado en la base de datos");

@@ -10,6 +10,7 @@
     <string name="helper_required">¡Campo requerido!</string>
     <string name="hint_phone">teléfono</string>
     <string name="hint_website">url del sitio web</string>
+    <string name="hint_descripcion">descripción del lugar</string>
     <string name="hint_foto_url">url de la imagen</string>
     <string name="edit_sitio_title_add">Añadir un nuevo sitio</string>
     <string name="menu_save">Guardar\n</string>

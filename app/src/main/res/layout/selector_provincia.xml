@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientlist"
+    tools:context=".menuCiudad">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="20dp"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="95dp">
+
+        <Button
+            android:layout_width="320dp"
+            android:layout_height="110dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="15dp"
+            android:onClick="onAlicanteButtonClick"
+            android:visibility="invisible" />
+
+
+        <ImageView
+            android:id="@+id/imageViewIbi"
+            android:layout_width="320dp"
+            android:layout_height="210dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:adjustViewBounds="true"
+            android:alpha="0.8"
+            android:background="@drawable/imageview_border"
+            android:cropToPadding="true"
+            android:padding="5dp"
+            android:radius="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ciudadalicante" />
+
+        <TextView
+            android:id="@+id/textViewAlicante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/imageViewIbi"
+            android:layout_alignTop="@id/imageViewIbi"
+            android:layout_alignEnd="@id/imageViewIbi"
+            android:layout_alignBottom="@id/imageViewIbi"
+            android:background="#33000000"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="Alicante"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
