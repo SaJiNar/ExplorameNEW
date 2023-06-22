@@ -1,20 +1,20 @@
 package com.example.exploramme;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
+
+import com.example.exploramme.R;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,10 +24,10 @@ public class AnyadirImagen extends AppCompatActivity {
     private static final int REQUEST_CAMERA = 1;
     private static final int REQUEST_GALLERY = 2;
 
+    private ImageView imageFoto;
     private Button btnCamara;
     private Button btnSeleccionarFoto;
     private Button btnAceptarFoto;
-    private ImageView imgView;
     private String rutaImagen;
 
     @Override
@@ -35,10 +35,10 @@ public class AnyadirImagen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camara);
 
+        imageFoto = findViewById(R.id.imageFoto);
         btnCamara = findViewById(R.id.botonCamara);
         btnSeleccionarFoto = findViewById(R.id.botonSeleccionarFoto);
         btnAceptarFoto = findViewById(R.id.botonaceptarfoto);
-        imgView = findViewById(R.id.imageView);
 
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +59,13 @@ public class AnyadirImagen extends AppCompatActivity {
             public void onClick(View v) {
                 // Realiza las acciones necesarias al aceptar la foto seleccionada
                 // Puedes obtener la ruta de la imagen seleccionada desde la variable "rutaImagen"
+                if (rutaImagen != null) {
+                    // Aquí puedes guardar la ruta de la imagen en tu base de datos o hacer lo que necesites
+                    // Ejemplo: guardarFoto(rutaImagen);
+                    Log.d("AnyadirImagen", "Ruta de la imagen seleccionada: " + rutaImagen);
+                } else {
+                    Log.d("AnyadirImagen", "No se ha seleccionado ninguna imagen");
+                }
             }
         });
     }
@@ -74,7 +81,7 @@ public class AnyadirImagen extends AppCompatActivity {
         }
 
         if (imagenArchivo != null) {
-            Uri fotoUri = FileProvider.getUriForFile(this, "com.example.exploramme.fileprovider", imagenArchivo);
+            Uri fotoUri = Uri.fromFile(imagenArchivo);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
             startActivityForResult(intent, REQUEST_CAMERA);
         }
@@ -82,43 +89,29 @@ public class AnyadirImagen extends AppCompatActivity {
 
     private File crearImagen() throws IOException {
         String nombreImagen = "foto_";
-        File directorio = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File directorio = getExternalFilesDir(null);
         File imagen = File.createTempFile(nombreImagen, ".jpg", directorio);
-
         rutaImagen = imagen.getAbsolutePath();
         return imagen;
     }
 
     private void cargarImagen() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/*");
         startActivityForResult(intent, REQUEST_GALLERY);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
             Bitmap imgBitmap = BitmapFactory.decodeFile(rutaImagen);
-            imgView.setImageBitmap(imgBitmap);
-        } else if (requestCode == REQUEST_GALLERY && resultCode == RESULT_OK) {
-            Uri imageUri = data.getData();
-            imgView.setImageURI(imageUri);
-            rutaImagen = obtenerRutaImagenDesdeUri(imageUri);
+            imageFoto.setImageBitmap(imgBitmap);
+        } else if (requestCode == REQUEST_GALLERY && resultCode == RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+            rutaImagen = selectedImage.getPath();
+            Bitmap imgBitmap = BitmapFactory.decodeFile(rutaImagen);
+            imageFoto.setImageBitmap(imgBitmap);
         }
-    }
-
-    private String obtenerRutaImagenDesdeUri(Uri uri) {
-        String path = null;
-        String[] projection = {MediaStore.Images.Media.DATA};
-        try (Cursor cursor = getContentResolver().query(uri, projection, null, null, null)) {
-            if (cursor != null && cursor.moveToFirst()) {
-                int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                path = cursor.getString(columnIndex);
-            }
-        } catch (Exception e) {
-            Log.e("Error", e.toString());
-        }
-        return path;
     }
 }

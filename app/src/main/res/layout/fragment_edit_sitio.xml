@@ -85,34 +85,14 @@
            android:layout_marginTop="@dimen/common_padding_default"
            android:gravity="center_vertical">
 
-           <com.google.android.material.textfield.TextInputLayout
-               android:layout_width="0dp"
-               android:layout_height="wrap_content"
-               android:layout_weight="1"
-               android:hint="@string/hint_foto_url"
-               app:endIconMode="clear_text"
-               app:startIconDrawable="@drawable/ic_link"
-               >
-
-               <com.google.android.material.textfield.TextInputEditText
-                   android:id="@+id/etPhotoUrl"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:textAppearance="?attr/textAppearanceCaption"
-                   android:textColor="@color/color_Link"
-                   android:minLines="@integer/line_url_photo"
-                   android:maxLines="@integer/line_url_photo"
-                   android:inputType="textMultiLine"
-                   />
-           </com.google.android.material.textfield.TextInputLayout>
-
            <ImageView
                android:id="@+id/imageFoto"
                android:layout_marginStart="@dimen/common_padding_default"
                android:layout_width="@dimen/photo_size_thumb"
                android:layout_height="@dimen/photo_size_thumb"
                android:src="@drawable/ic_image"
-               android:contentDescription="@string/description_image_foto"/>
+               android:contentDescription="@string/description_image_foto"
+               android:clickable="true"/>
 
        </LinearLayout>
 
