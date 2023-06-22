@@ -10,36 +10,7 @@
     android:paddingRight="20dp"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/botonCamara"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/btncamara" />
 
-    <Button
-        android:id="@+id/botonSeleccionarFoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"
-        android:onClick="onClickGaleria"
-        android:text="@string/btnseleccionarfoto" />
 
-    <ImageView
-        android:id="@+id/imageFoto"
-        android:layout_width="360dp"
-        android:layout_height="360dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"/>
-
-    <Button
-        android:id="@+id/botonaceptarfoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/btnaceptarfoto" />
 
 </LinearLayout>

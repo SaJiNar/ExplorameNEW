@@ -78,23 +78,47 @@
        </com.google.android.material.textfield.TextInputLayout>
 
 
-       <LinearLayout
+       <Button
+           android:id="@+id/botonCamara"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           android:layout_marginTop="@dimen/common_padding_default"
-           android:gravity="center_vertical">
+           android:layout_gravity="center_horizontal"
+           android:layout_marginTop="20dp"
+           android:layout_marginBottom="20dp"
+           android:text="@string/btncamara" />
 
-           <ImageView
-               android:id="@+id/imageFoto"
-               android:layout_marginStart="@dimen/common_padding_default"
-               android:layout_width="@dimen/photo_size_thumb"
-               android:layout_height="@dimen/photo_size_thumb"
-               android:src="@drawable/ic_image"
-               android:contentDescription="@string/description_image_foto"
-               android:clickable="true"/>
+       <Button
+           android:id="@+id/botonSeleccionarFoto"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_horizontal"
+           android:layout_marginBottom="20dp"
+           android:onClick="onClickGaleria"
+           android:text="@string/btnseleccionarfoto" />
 
-       </LinearLayout>
+       <ImageView
+           android:id="@+id/imageFoto"
+           android:layout_width="280dp"
+           android:layout_height="280dp"
+           android:layout_gravity="center_horizontal"
+           android:layout_marginBottom="20dp"/>
+
+       <Spinner
+           android:id="@+id/sp_Ciudad"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:entries="@array/ciudad"
+           android:minHeight="60dp"
+           android:textSize="30dp"
+           android:textStyle="bold"/>
+
+       <Button
+           android:id="@+id/botonaceptarfoto"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_horizontal"
+           android:text="@string/btnaceptarfoto" />
+
 
    </LinearLayout>
 

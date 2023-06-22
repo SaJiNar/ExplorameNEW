@@ -10,11 +10,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.exploramme.ciudades.alcoy.AlcoyActivity;
-import com.example.exploramme.ciudades.castalla.CastallaActivity;
-import com.example.exploramme.ciudades.ibi.IbiActivity;
-import com.example.exploramme.ciudades.onil.OnilActivity;
-
 public class menuCiudad extends AppCompatActivity {
 
     private ConstraintLayout container;

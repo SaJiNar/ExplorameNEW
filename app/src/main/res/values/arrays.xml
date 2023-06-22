@@ -6,4 +6,13 @@
         <item>Otro</item>
         <item>Prefiero no decirlo</item>
     </string-array>
+
+
+    <string-array name="ciudad">
+        <item>Alcoy</item>
+        <item>Castalla</item>
+        <item>Ibi</item>
+        <item>Onil</item>
+    </string-array>
+
 </resources>

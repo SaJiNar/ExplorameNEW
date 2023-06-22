@@ -49,22 +49,28 @@
             android:name=".menuCiudad"
             android:exported="true" />
 
+        <activity
+            android:name=".AnyadirSitio"
+            android:exported="true" />
+
         <!-- Declaración de actividades de ciudades -->
         <activity
-            android:name="com.example.exploramme.ciudades.alcoy.AlcoyActivity"
+            android:name=".AlcoyActivity"
             android:exported="true" />
 
         <activity
-            android:name="com.example.exploramme.ciudades.castalla.CastallaActivity"
+            android:name=".CastallaActivity"
             android:exported="true" />
 
         <activity
-            android:name="com.example.exploramme.ciudades.ibi.IbiActivity"
+            android:name=".IbiActivity"
             android:exported="true" />
 
         <activity
-            android:name="com.example.exploramme.ciudades.onil.OnilActivity"
+            android:name=".OnilActivity"
             android:exported="true" />
+
+
     </application>
 
 </manifest>
