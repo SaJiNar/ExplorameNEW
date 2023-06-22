@@ -154,12 +154,14 @@ public class AnyadirSitio extends AppCompatActivity {
     }
 
     private void insertarSitioEnBaseDeDatos(String rutaImagen) {
+        String id_lugar = "lista del id"; // Obtén el nombre del lugar desde algún campo de entrada
         String nombreLugar = "Nombre del lugar"; // Obtén el nombre del lugar desde algún campo de entrada
         String telefonoLugar = "Teléfono del lugar"; // Obtén el teléfono del lugar desde algún campo de entrada
         String urlLugar = "URL del lugar"; // Obtén la URL del lugar desde algún campo de entrada
         String ciudad = "Ciudad del lugar"; // Obtén la ciudad del lugar desde algún campo de entrada
+        String descripcion = "Descripcion del lugar"; //Obtén la descripcion del lugar desde algún campo de entrada
 
-        long resultado = dbHelper.insertarSitio(nombreLugar, telefonoLugar, urlLugar, rutaImagen, ciudad);
+        long resultado = dbHelper.insertarSitio(id_lugar, nombreLugar, telefonoLugar, urlLugar, rutaImagen, ciudad, descripcion);
         if (resultado != -1) {
             // Inserción exitosa
             Log.d("AnyadirImagen", "Sitio insertado en la base de datos");
