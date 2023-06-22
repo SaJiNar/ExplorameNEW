@@ -23,7 +23,6 @@
             android:onClick="onAlicanteButtonClick"
             android:visibility="invisible" />
 
-
         <ImageView
             android:id="@+id/imageViewIbi"
             android:layout_width="320dp"
@@ -38,6 +37,22 @@
             android:radius="5dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ciudadalicante" />
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="320dp"
+            android:layout_height="210dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:adjustViewBounds="true"
+            android:alpha="0.8"
+            android:background="@drawable/imageview_border"
+            android:cropToPadding="true"
+            android:padding="5dp"
+            android:radius="5dp"
+            android:scaleType="centerCrop"
+            android:layout_below="@id/imageViewIbi" />
 
         <TextView
             android:id="@+id/textViewAlicante"

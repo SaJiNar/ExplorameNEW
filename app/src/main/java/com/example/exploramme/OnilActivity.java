@@ -2,6 +2,7 @@ package com.example.exploramme;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -52,6 +53,19 @@ public class OnilActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
+
+        // Agregar botón de retroceso en la barra de título
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    // Manejar el evento de hacer clic en el botón de retroceso de la barra de título
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void cargarLugares(String ciudad) {
@@ -81,7 +95,7 @@ public class OnilActivity extends AppCompatActivity {
                     Toast.makeText(this, "Lugar añadido correctamente", Toast.LENGTH_SHORT).show();
 
                     // Cargar nuevamente la lista de lugares
-                    cargarLugares("Alcoy");
+                    cargarLugares("Onil");
                 } else {
                     Toast.makeText(this, "Error al añadir el lugar", Toast.LENGTH_SHORT).show();
                 }
