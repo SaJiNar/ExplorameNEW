@@ -6,8 +6,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +24,7 @@ public class OnilActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     public LugarAdapter lugarAdapter;
     private List<Lugar> lugarList;
+    private ActionBar toolbar;
 
     private DBHelper dbHelper;
 
@@ -31,10 +32,6 @@ public class OnilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onil);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Onil");
 
         recyclerView = findViewById(R.id.recyclerView);
         lugarList = new ArrayList<>();
@@ -45,6 +42,9 @@ public class OnilActivity extends AppCompatActivity {
         recyclerView.setAdapter(lugarAdapter);
 
         dbHelper = new DBHelper(this);
+
+        toolbar = getSupportActionBar();
+        toolbar.setTitle(R.string.toolbar_onil);
 
         // Cargar lugares desde la base de datos con filtro de ciudad (Onil)
         cargarLugares("Onil");
@@ -108,3 +108,4 @@ public class OnilActivity extends AppCompatActivity {
         }
     }
 }
+

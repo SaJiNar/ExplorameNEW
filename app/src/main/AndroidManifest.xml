@@ -38,7 +38,7 @@
         </provider>
 
         <activity
-            android:name=".menuLogin"
+            android:name=".MenuLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,6 +46,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MenuRegistro"
+            android:exported="true" />
 
         <activity android:name=".menuProvincia"
             android:exported="true"/>

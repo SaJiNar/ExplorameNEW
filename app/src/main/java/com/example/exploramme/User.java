@@ -1,47 +1,67 @@
 package com.example.exploramme;
 
 public class User {
-    private String nombre;
-    private String telefono;
-    private String email;
-    private String genero;
+    private int id;
+    private String Nombre;
+    private String Telefono;
+    private String Email;
+    private String Password;
+    private String Genero;
 
-    public User(String nombre, String telefono, String email, String genero) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.email = email;
-        this.genero = genero;
+    public User(int id, String NombreUser, String TelefonoUser, String EmailUser, String PasswordUser, String GeneroUser) {
+        this.id = id;
+        this.Nombre = NombreUser;
+        this.Telefono = TelefonoUser;
+        this.Email = EmailUser;
+        this.Password = PasswordUser;
+        this.Genero = GeneroUser;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getId() {
+        return id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getNombreUser() {
+        return Nombre;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setNombreUser(String nombreCompleto) {
+        this.Nombre = nombreCompleto;
     }
 
-    public String getEmail() {
-        return email;
+    public String getTelefonoUser() {
+        return Telefono;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTelefonoUser(String telefono) {
+        this.Telefono = telefono;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getCorreoElectronicoUser() {
+        return Email;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setCorreoElectronicoUser(String correoElectronico) {
+        this.Email = correoElectronico;
+    }
+
+    public String getPasswordUser() {
+        return Password;
+    }
+
+    public void setPasswordUser(String password) {
+        this.Password = password;
+    }
+
+    public String getGeneroUser() {
+        return Genero;
+    }
+
+    public void setGeneroUser(String genero) {
+        this.Genero = genero;
     }
 }

@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,7 @@ public class CastallaActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     public LugarAdapter lugarAdapter;
     private List<Lugar> lugarList;
+    private ActionBar toolbar;
 
     private DBHelper dbHelper;
 
@@ -40,6 +42,9 @@ public class CastallaActivity extends AppCompatActivity {
         recyclerView.setAdapter(lugarAdapter);
 
         dbHelper = new DBHelper(this);
+
+        toolbar = getSupportActionBar();
+        toolbar.setTitle(R.string.toolbar_castalla);
 
         // Cargar lugares desde la base de datos con filtro de ciudad (Castalla)
         cargarLugares("Castalla");

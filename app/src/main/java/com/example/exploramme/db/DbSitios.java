@@ -2,6 +2,7 @@ package com.example.exploramme.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
@@ -15,22 +16,23 @@ public class DbSitios extends DBHelper {
         this.context = context;
     }
 
-    public long insertarUsuarios(String nombre_completo, int Telefono_completo, String correo_electronico, String genero) {
+    public long insertarUsuarios(String Nombre, String Telefono, String Email, String Password, String Genero) {
         long id = 0;
 
         try {
-            SQLiteDatabase db = this.getWritableDatabase();
+            DBHelper dbHelper = new DBHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put("nombre_completo", nombre_completo);
-            values.put("Telefono_completo", Telefono_completo);
-            values.put("correo_electronico", correo_electronico);
-            values.put("genero", genero);
+            values.put("Nombre", Nombre);
+            values.put("Telefono", Telefono);
+            values.put("Email", Email);
+            values.put("Password", Password);
+            values.put("Genero", Genero);
 
-            id = db.insert(TABLE_REGISTROS, null, values); // Inserta en la tabla "registro"
-            db.close();
+            id = db.insert(TABLE_USUARIOS, null, values);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            ex.toString();
         }
 
         return id;
@@ -40,7 +42,8 @@ public class DbSitios extends DBHelper {
         long id = 0;
 
         try {
-            SQLiteDatabase db = this.getWritableDatabase();
+            DBHelper dbHelper1 = new DBHelper(context);
+            SQLiteDatabase db = dbHelper1.getWritableDatabase();
 
             ContentValues values = new ContentValues();
             values.put("id_lugar", id_lugar);
@@ -51,12 +54,41 @@ public class DbSitios extends DBHelper {
             values.put("ciudad", ciudad);
             values.put("descripcion", descripcion);
 
-            id = db.insert(TABLE_SITIOS, null, values); // Inserta en la tabla "sitios"
-            db.close();
+            id = db.insert(TABLE_SITIOS, null, values);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            ex.toString();
         }
 
         return id;
+    }
+
+    public boolean verificarCredenciales(String email, String password) {
+        DBHelper dbHelper = new DBHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String[] projection = {
+                "Email",
+                "Password"
+        };
+
+        String selection = "Email = ? AND Password = ?";
+        String[] selectionArgs = {email, password};
+
+        Cursor cursor = db.query(
+                TABLE_USUARIOS,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        boolean credencialesValidas = cursor.getCount() > 0;
+
+        cursor.close();
+        db.close();
+
+        return credencialesValidas;
     }
 }

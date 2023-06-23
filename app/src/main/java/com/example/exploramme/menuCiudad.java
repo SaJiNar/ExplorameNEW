@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -23,6 +24,7 @@ public class menuCiudad extends AppCompatActivity {
     private TextView textViewIbi;
     private TextView textViewOnil;
     private ConstraintLayout constraintLayout;
+    private ActionBar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,9 @@ public class menuCiudad extends AppCompatActivity {
         textViewIbi = findViewById(R.id.textViewIbi);
         textViewOnil = findViewById(R.id.textViewOnil);
         constraintLayout = findViewById(R.id.constraintLayout);
+
+        toolbar = getSupportActionBar();
+        toolbar.setTitle(R.string.toolbar_ciudad);
 
         imageViewAlcoy.setOnClickListener(new View.OnClickListener() {
             @Override

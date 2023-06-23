@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
@@ -33,12 +34,16 @@ public class AnyadirSitio extends AppCompatActivity {
     private Button btnSeleccionarFoto;
     private Button btnAceptarFoto;
     private String rutaImagen;
+    private ActionBar toolbar;
     private DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_edit_sitio);
+
+        toolbar = getSupportActionBar();
+        toolbar.setTitle(R.string.toolbar_sitio);
 
         dbHelper = new DBHelper(this);
 

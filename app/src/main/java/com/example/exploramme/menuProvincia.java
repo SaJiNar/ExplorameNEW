@@ -11,6 +11,7 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -21,6 +22,7 @@ public class menuProvincia extends AppCompatActivity {
     private ImageView imageViewAlicante;
     private TextView textViewAlicante;
     private VideoView videoView;
+    private ActionBar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,9 @@ public class menuProvincia extends AppCompatActivity {
         imageViewAlicante = findViewById(R.id.imageViewIbi);
         textViewAlicante = findViewById(R.id.textViewAlicante);
         videoView = findViewById(R.id.videoView);
+
+        toolbar = getSupportActionBar();
+        toolbar.setTitle(R.string.toolbar_provincia);
 
         // Agregar video
         VideoView videoView = findViewById(R.id.videoView);

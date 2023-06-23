@@ -1,11 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_login"
+    android:id="@+id/activity_registro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".menuLogin">
+    tools:context=".MenuRegistro">
 
     <LinearLayout
         android:id="@+id/layoutPrincipal"
@@ -15,6 +15,45 @@
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/textNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre y Apellidos"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:ems="18"
+            android:gravity="center_horizontal"
+            android:inputType="textEmailAddress"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/textTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:text="Telefono"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:ems="18"
+            android:gravity="center_horizontal"
+            android:inputType="phone"
+            android:textSize="30dp" />
 
         <TextView
             android:id="@+id/textEmail"
@@ -56,31 +95,26 @@
             android:inputType="textPassword"
             android:textSize="30dp" />
 
+        <Spinner
+            android:id="@+id/sp_Genero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/genero"
+            android:minHeight="60dp"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
+
         <Button
-            android:id="@+id/btnIniciarSesion"
+            android:id="@+id/btnCrearCuenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="INICIAR SESIÓN"
+            android:text="Crear Cuenta"
             android:textSize="25dp"
             android:backgroundTint="@color/blue_gray_light"
             app:cornerRadius="20dp"
-            android:elevation="8dp"/>
-
+            android:elevation="8dp"
+            android:onClick="onRegistrarseClick" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btnRegistrarse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="16dp"
-        android:text="Registrarse"
-        android:textSize="16sp"
-        android:backgroundTint="@color/blue_gray_light"
-        app:cornerRadius="20dp"
-        android:elevation="8dp"/>
-
 </RelativeLayout>
