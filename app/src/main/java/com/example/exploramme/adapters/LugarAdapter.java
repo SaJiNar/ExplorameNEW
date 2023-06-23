@@ -1,8 +1,11 @@
 package com.example.exploramme.adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,14 +44,24 @@ public class LugarAdapter extends RecyclerView.Adapter<LugarAdapter.LugarViewHol
 
     public class LugarViewHolder extends RecyclerView.ViewHolder {
 
+        private ImageView imgFoto;
         private TextView nombreTextView;
 
         public LugarViewHolder(@NonNull View itemView) {
             super(itemView);
+            imgFoto = itemView.findViewById(R.id.imgFoto);
             nombreTextView = itemView.findViewById(R.id.nombreTextView);
         }
 
         public void bind(Lugar lugar) {
+            // Mostrar la imagen del lugar
+            byte[] imageData = lugar.getImagen().getBytes();
+            if (imageData != null) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+                imgFoto.setImageBitmap(bitmap);
+            }
+
+            // Mostrar el nombre del lugar
             nombreTextView.setText(lugar.getNombreLugar());
         }
     }

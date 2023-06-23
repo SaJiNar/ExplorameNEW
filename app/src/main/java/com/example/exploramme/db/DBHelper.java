@@ -54,7 +54,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         // Crear la tabla "sitios"
         String createSitiosTable = "CREATE TABLE " + TABLE_SITIOS + " (" +
-                COLUMN_ID_LUGAR + " TEXT PRIMARY KEY NOT NULL," +
+                COLUMN_ID_LUGAR + " INTEGER PRIMARY KEY NOT NULL," +
                 COLUMN_NOMBRE_LUGAR + " TEXT NOT NULL," +
                 COLUMN_TELEFONO_LUGAR + " TEXT," +
                 COLUMN_URL_LUGAR + " TEXT," +
@@ -76,12 +76,12 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public long insertarUsuario(String Nombre, String Telefono, String Email,
+    public long insertarUsuario(String nombre, String Telefono, String Email,
                                 String Password, String Genero) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_NOMBRE_USUARIO, Nombre);
+        values.put(COLUMN_NOMBRE_USUARIO, nombre);
         values.put(COLUMN_TELEFONO, Telefono);
         values.put(COLUMN_CORREO_ELECTRONICO, Email);
         values.put(COLUMN_PASSWORD, Password);
@@ -122,11 +122,10 @@ public class DBHelper extends SQLiteOpenHelper {
         return userList;
     }
 
-    public long insertarSitio(String id_lugar, String nombre_lugar, String telefono_lugar, String url_lugar, String imagen, String ciudad, String descripcion) {
+    public long insertarSitio(String nombre_lugar, String telefono_lugar, String url_lugar, String imagen, String ciudad, String descripcion) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID_LUGAR, id_lugar);
         values.put(COLUMN_NOMBRE_LUGAR, nombre_lugar);
         values.put(COLUMN_TELEFONO_LUGAR, telefono_lugar);
         values.put(COLUMN_URL_LUGAR, url_lugar);
@@ -150,15 +149,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                String idLugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ID_LUGAR));
-                String nombreLugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOMBRE_LUGAR));
-                String telefonoLugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TELEFONO_LUGAR));
-                String urlLugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_URL_LUGAR));
+                String id_lugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ID_LUGAR));
+                String nombre_lugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOMBRE_LUGAR));
+                String telefono_lugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TELEFONO_LUGAR));
+                String url_lugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_URL_LUGAR));
                 String imagen = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_IMAGEN));
                 String ciudad = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CIUDAD));
                 String descripcion = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPCION));
 
-                Lugar lugar = new Lugar(idLugar, nombreLugar, telefonoLugar, urlLugar, imagen, ciudad, descripcion);
+                Lugar lugar = new Lugar(id_lugar, nombre_lugar, telefono_lugar, url_lugar, imagen, ciudad, descripcion);
                 lugarList.add(lugar);
             } while (cursor.moveToNext());
         }
@@ -180,15 +179,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                String idLugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ID_LUGAR));
-                String nombreLugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOMBRE_LUGAR));
-                String telefonoLugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TELEFONO_LUGAR));
-                String urlLugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_URL_LUGAR));
+                String id_lugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ID_LUGAR));
+                String nombre_lugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOMBRE_LUGAR));
+                String telefono_lugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TELEFONO_LUGAR));
+                String url_lugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_URL_LUGAR));
                 String imagen = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_IMAGEN));
                 String ciudadLugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CIUDAD));
                 String descripcion = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPCION));
 
-                Lugar lugar = new Lugar(idLugar, nombreLugar, telefonoLugar, urlLugar, imagen, ciudadLugar, descripcion);
+                Lugar lugar = new Lugar(id_lugar, nombre_lugar, telefono_lugar, url_lugar, imagen, ciudadLugar, descripcion);
                 lugaresByCiudad.add(lugar);
             } while (cursor.moveToNext());
         }

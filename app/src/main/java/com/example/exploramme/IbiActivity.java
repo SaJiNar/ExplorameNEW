@@ -86,16 +86,15 @@ public class IbiActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 // Obtener los datos del nuevo lugar añadido
-                String idLugar = data.getStringExtra("id_lugar");
-                String nombreLugar = data.getStringExtra("nombre_lugar");
-                String telefonoLugar = data.getStringExtra("telefono_lugar");
-                String urlLugar = data.getStringExtra("url_lugar");
+                String nombre_lugar = data.getStringExtra("nombre_lugar");
+                String telefono_lugar = data.getStringExtra("telefono_lugar");
+                String url_lugar = data.getStringExtra("url_lugar");
                 String imagen = data.getStringExtra("imagen");
                 String ciudad = data.getStringExtra("ciudad");
                 String descripcion = data.getStringExtra("descripcion");
 
                 // Guardar el lugar en la base de datos
-                long id = dbHelper.insertarSitio(idLugar, nombreLugar, telefonoLugar, urlLugar, imagen, ciudad, descripcion);
+                long id = dbHelper.insertarSitio(nombre_lugar, telefono_lugar, url_lugar, imagen, ciudad, descripcion);
                 if (id != -1) {
                     Toast.makeText(this, "Lugar añadido correctamente", Toast.LENGTH_SHORT).show();
 

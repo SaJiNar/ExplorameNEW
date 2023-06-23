@@ -38,7 +38,7 @@ public class DbSitios extends DBHelper {
         return id;
     }
 
-    public long insertarSitios(String id_lugar, String nombre_sitio, int Telefono_sitio, String url_sitio, byte[] imagenBytes, String ciudad, String descripcion) {
+    public long insertarSitios(String idLugar, String nombreSitio, int TelefonoSitio, String urlSitio, byte[] imagen, String ciudad, String descripcion) {
         long id = 0;
 
         try {
@@ -46,11 +46,11 @@ public class DbSitios extends DBHelper {
             SQLiteDatabase db = dbHelper1.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put("id_lugar", id_lugar);
-            values.put("nombre_sitio", nombre_sitio);
-            values.put("Telefono_sitio", Telefono_sitio);
-            values.put("url_sitio", url_sitio);
-            values.put("imagen", imagenBytes);
+            values.put("idLugar", idLugar);
+            values.put("nombreSitio", nombreSitio);
+            values.put("TelefonoSitio", TelefonoSitio);
+            values.put("urlSitio", urlSitio);
+            values.put("imagen", imagen);
             values.put("ciudad", ciudad);
             values.put("descripcion", descripcion);
 

@@ -14,7 +14,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +27,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.example.exploramme.db.DBHelper;
+import com.example.exploramme.db.DbSitios;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,6 +46,9 @@ public class AnyadirSitio extends AppCompatActivity {
     private String rutaImagen;
     private ActionBar toolbar;
     private DBHelper dbHelper;
+    private EditText etName, etPhone, etWebsite, etDescripcion;
+    private Spinner sp_Ciudad;
+    private DbSitios dbSitios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,13 @@ public class AnyadirSitio extends AppCompatActivity {
         btnCamara = findViewById(R.id.botonCamara);
         btnSeleccionarFoto = findViewById(R.id.botonSeleccionarFoto);
         btnAceptarFoto = findViewById(R.id.botonaceptar);
+        etName = findViewById(R.id.etName);
+        etPhone = findViewById(R.id.etPhone);
+        etWebsite = findViewById(R.id.etWebsite);
+        etDescripcion = findViewById(R.id.etDescripcion);
+        sp_Ciudad = findViewById(R.id.sp_Ciudad);
+
+        dbSitios = new DbSitios(this);
 
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +101,9 @@ public class AnyadirSitio extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Verificar y solicitar permisos en tiempo de ejecución (para versiones de Android >= 6.0)
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, REQUEST_PERMISSION);
         } else {
             // Permiso ya concedido
         }
@@ -144,7 +158,7 @@ public class AnyadirSitio extends AppCompatActivity {
                 mostrarImagenCamara();
             } else if (requestCode == REQUEST_GALLERY) {
                 mostrarImagenGaleria(data);
-            } else if (requestCode == GALLERY_REQUEST_CODE){
+            } else if (requestCode == GALLERY_REQUEST_CODE && data != null) {
                 imageView.setImageURI(data.getData());
             }
         }
@@ -157,7 +171,7 @@ public class AnyadirSitio extends AppCompatActivity {
 
     private void mostrarImagenGaleria(Intent data) {
         Uri imagenUri = data.getData();
-        String[] filePathColumn = { MediaStore.Images.Media.DATA };
+        String[] filePathColumn = {MediaStore.Images.Media.DATA};
         Cursor cursor = getContentResolver().query(imagenUri, filePathColumn, null, null, null);
         cursor.moveToFirst();
         int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
@@ -170,14 +184,13 @@ public class AnyadirSitio extends AppCompatActivity {
     }
 
     private void insertarSitioEnBaseDeDatos(String rutaImagen) {
-        String id_lugar = "lista del id";
-        String nombreLugar = "Nombre del lugar";
-        String telefonoLugar = "Teléfono del lugar";
-        String urlLugar = "URL del lugar";
-        String ciudad = "Ciudad del lugar";
-        String descripcion = "Descripcion del lugar";
+        String nombreLugar = etName.getText().toString();
+        String telefonoLugar = etPhone.getText().toString();
+        String urlLugar = etWebsite.getText().toString();
+        String ciudad = sp_Ciudad.getSelectedItem().toString();
+        String descripcion = etDescripcion.getText().toString();
 
-        long resultado = dbHelper.insertarSitio(id_lugar, nombreLugar, telefonoLugar, urlLugar, rutaImagen, ciudad, descripcion);
+        long resultado = dbHelper.insertarSitio(nombreLugar, telefonoLugar, urlLugar, rutaImagen, ciudad, descripcion);
         if (resultado != -1) {
             Log.d("AnyadirImagen", "Sitio insertado en la base de datos");
         } else {

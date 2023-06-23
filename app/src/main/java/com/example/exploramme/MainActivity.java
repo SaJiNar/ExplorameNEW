@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.exploramme.adapters.LugarAdapter;
 import com.example.exploramme.db.DBHelper;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    public LugarAdapter lugarAdapter;
+    private LugarAdapter lugarAdapter;
     private List<Lugar> lugarList;
 
     private DBHelper dbHelper;
@@ -81,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 // Obtener los datos del nuevo lugar añadido
-                String idLugar = data.getStringExtra("id_lugar");
                 String nombreLugar = data.getStringExtra("nombre_lugar");
                 String telefonoLugar = data.getStringExtra("telefono_lugar");
                 String urlLugar = data.getStringExtra("url_lugar");
@@ -90,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 String descripcion = data.getStringExtra("descripcion");
 
                 // Guardar el lugar en la base de datos
-                long id = dbHelper.insertarSitio(idLugar, nombreLugar, telefonoLugar, urlLugar, imagen, ciudad, descripcion);
+                long id = dbHelper.insertarSitio(nombreLugar, telefonoLugar, urlLugar, imagen, ciudad, descripcion);
                 if (id != -1) {
                     Toast.makeText(this, "Lugar añadido correctamente", Toast.LENGTH_SHORT).show();
 
