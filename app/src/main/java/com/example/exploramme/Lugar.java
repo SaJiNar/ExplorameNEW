@@ -9,7 +9,7 @@ public class Lugar {
     private String ciudad;
     private String descripcion;
 
-    public Lugar(String idLugar, String nombreLugar, String telefonoLugar, String urlLugar, String imagen, String ciudad, String descripcion) {
+    public Lugar(String idLugar, String nombreLugar, String telefonoLugar, String urlLugar, String imagen, String ciudad) {
         this.idLugar = idLugar;
         this.nombreLugar = nombreLugar;
         this.telefonoLugar = telefonoLugar;

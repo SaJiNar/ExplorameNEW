@@ -25,12 +25,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.exploramme.adapters.LugarAdapter;
 import com.example.exploramme.db.DBHelper;
 import com.example.exploramme.db.DbSitios;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnyadirSitio extends AppCompatActivity {
 
@@ -49,6 +53,8 @@ public class AnyadirSitio extends AppCompatActivity {
     private EditText etName, etPhone, etWebsite, etDescripcion;
     private Spinner sp_Ciudad;
     private DbSitios dbSitios;
+    private RecyclerView recyclerView;
+    private List<Lugar> lugarList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +98,9 @@ public class AnyadirSitio extends AppCompatActivity {
                 if (rutaImagen != null) {
                     Log.d("AnyadirImagen", "Ruta de la imagen seleccionada: " + rutaImagen);
                     insertarSitioEnBaseDeDatos(rutaImagen);
+                    lugarList.add(new Lugar(etName.getText().toString(), etPhone.getText().toString(), etWebsite.getText().toString(), rutaImagen, sp_Ciudad.getSelectedItem().toString(), etDescripcion.getText().toString()));
+                    LugarAdapter adapter = new LugarAdapter(lugarList);
+                    recyclerView.setAdapter(adapter);
                 } else {
                     Log.d("AnyadirImagen", "No se ha seleccionado ninguna imagen");
                 }
@@ -107,6 +116,9 @@ public class AnyadirSitio extends AppCompatActivity {
         } else {
             // Permiso ya concedido
         }
+
+        recyclerView = findViewById(R.id.recyclerView);
+        lugarList = new ArrayList<>();
     }
 
     @Override

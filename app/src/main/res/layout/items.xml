@@ -13,39 +13,44 @@
 
         <ImageView
             android:id="@+id/imgFoto"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@android:color/darker_gray"
-            android:contentDescription="@string/description_image_foto"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"/>
 
         <TextView
-            android:id="@+id/tvName"
-            android:layout_width="0dp"
+            android:id="@+id/nombreTextView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/color_white_t"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:padding="@dimen/common_padding_min"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp" />
 
-            android:textAppearance="?attr/textAppearanceBody2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/cbFavorite"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/telefonoTextView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:button="@drawable/states_cb_favorite"
-            android:buttonTint="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/urlTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/descripcionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

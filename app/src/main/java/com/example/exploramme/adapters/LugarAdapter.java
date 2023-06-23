@@ -46,11 +46,17 @@ public class LugarAdapter extends RecyclerView.Adapter<LugarAdapter.LugarViewHol
 
         private ImageView imgFoto;
         private TextView nombreTextView;
+        private TextView telefonoTextView;
+        private TextView urlTextView;
+        private TextView descripcionTextView;
 
         public LugarViewHolder(@NonNull View itemView) {
             super(itemView);
             imgFoto = itemView.findViewById(R.id.imgFoto);
             nombreTextView = itemView.findViewById(R.id.nombreTextView);
+            telefonoTextView = itemView.findViewById(R.id.telefonoTextView);
+            urlTextView = itemView.findViewById(R.id.urlTextView);
+            descripcionTextView = itemView.findViewById(R.id.descripcionTextView);
         }
 
         public void bind(Lugar lugar) {
@@ -61,8 +67,12 @@ public class LugarAdapter extends RecyclerView.Adapter<LugarAdapter.LugarViewHol
                 imgFoto.setImageBitmap(bitmap);
             }
 
-            // Mostrar el nombre del lugar
+            // Mostrar los datos del lugar
             nombreTextView.setText(lugar.getNombreLugar());
+            telefonoTextView.setText(lugar.getTelefonoLugar());
+            urlTextView.setText(lugar.getUrlLugar());
+            descripcionTextView.setText(lugar.getDescripcion());
         }
     }
+
 }

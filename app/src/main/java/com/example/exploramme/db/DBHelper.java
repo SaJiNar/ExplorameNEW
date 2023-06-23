@@ -157,7 +157,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 String ciudad = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CIUDAD));
                 String descripcion = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPCION));
 
-                Lugar lugar = new Lugar(id_lugar, nombre_lugar, telefono_lugar, url_lugar, imagen, ciudad, descripcion);
+                Lugar lugar = new Lugar(id_lugar, nombre_lugar, telefono_lugar, url_lugar, imagen, ciudad);
                 lugarList.add(lugar);
             } while (cursor.moveToNext());
         }
@@ -187,7 +187,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 String ciudadLugar = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CIUDAD));
                 String descripcion = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPCION));
 
-                Lugar lugar = new Lugar(id_lugar, nombre_lugar, telefono_lugar, url_lugar, imagen, ciudadLugar, descripcion);
+                Lugar lugar = new Lugar(id_lugar, nombre_lugar, telefono_lugar, url_lugar, imagen, ciudadLugar);
                 lugaresByCiudad.add(lugar);
             } while (cursor.moveToNext());
         }
